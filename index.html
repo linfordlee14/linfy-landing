@@ -1,424 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linfy Tech Solutions — Build smarter. Secure faster.</title>
-  <meta name="description" content="Linfy Tech Solutions builds modern websites, custom web apps, cybersecurity solutions, data recovery support, and IT consulting for ambitious businesses." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #081120;
-      --bg-2: #0d172a;
-      --panel: rgba(255,255,255,0.06);
-      --line: rgba(255,255,255,0.12);
-      --text: #e6eef8;
-      --muted: #9fb0c4;
-      --primary: #3b82f6;
-      --primary-2: #06b6d4;
-      --success: #22c55e;
-      --max: 1180px;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 22px;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Linfy Tech Solutions — Design, Support &amp; Analytics</title>
+<meta name="description" content="Graphic design, user support, and data analytics services from Cape Town. Linfy Tech Solutions turns ideas into impact."/>
+<meta property="og:title" content="Linfy Tech Solutions"/>
+<meta property="og:description" content="Graphic design, user support &amp; data analytics — Cape Town, South Africa."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-body:'DM Sans','Helvetica Neue',sans-serif;
+  --font-mono:'DM Mono','Courier New',monospace;
+  --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+  --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --text-3xl:clamp(2.5rem,1rem + 4vw,5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+  --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;
+  --radius-xl:1rem;--radius-2xl:1.5rem;--radius-full:9999px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --t:200ms;
+  --content-wide:1200px;--content-default:960px;
+}
+:root,[data-theme="dark"]{
+  --bg:#080c0a;--surface:#0d1210;--surface-2:#121a14;
+  --surface-3:#172019;--surface-4:#1e2b20;
+  --divider:#1b2a1d;--border:#223026;
+  --text:#cdd9ce;--text-muted:#6e876f;--text-faint:#344a35;
+  --text-inv:#080c0a;
+  --teal:#1fd17e;--teal-h:#18bc6e;--teal-d:rgba(31,209,126,.1);--teal-g:rgba(31,209,126,.05);
+  --violet:#9d7dff;--violet-d:rgba(157,125,255,.1);
+  --amber:#f0a832;--amber-d:rgba(240,168,50,.1);
+}
+[data-theme="light"]{
+  --bg:#f5f7f5;--surface:#ffffff;--surface-2:#f0f4f0;
+  --surface-3:#e8ede8;--surface-4:#dfe6df;
+  --divider:#d4dbd4;--border:#c8d2c8;
+  --text:#1a271b;--text-muted:#556756;--text-faint:#aabdab;
+  --text-inv:#f5f7f5;
+  --teal:#0e7c47;--teal-h:#0a6a3c;--teal-d:rgba(14,124,71,.1);--teal-g:rgba(14,124,71,.05);
+  --violet:#6b4fcc;--violet-d:rgba(107,79,204,.1);
+  --amber:#c47d00;--amber-d:rgba(196,125,0,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:4rem}
+body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a,button{transition:all var(--t) var(--ease)}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+::selection{background:var(--teal-d);color:var(--text)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:var(--radius-sm)}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,.20), transparent 30%),
-        radial-gradient(circle at top right, rgba(6,182,212,.18), transparent 25%),
-        linear-gradient(180deg, #081120 0%, #0b1424 45%, #09111f 100%);
-    }
+.wrap{max-width:var(--content-wide);margin-inline:auto;padding-inline:clamp(var(--space-4),5vw,var(--space-16))}
+section{padding-block:clamp(var(--space-16),9vw,var(--space-24))}
 
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
-    .pill {
-      display: inline-flex;
-      gap: .5rem;
-      align-items: center;
-      padding: .55rem .9rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      color: #cde3ff;
-      font-size: .9rem;
-    }
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) clamp(var(--space-4),5vw,var(--space-16));background:color-mix(in oklab,var(--bg) 80%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--divider)}
+.logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--text);font-weight:600;font-size:var(--text-sm)}
+.nav-links{display:flex;gap:var(--space-8);list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-size:var(--text-sm);font-weight:500}
+.nav-links a:hover{color:var(--teal)}
+.nav-end{display:flex;align-items:center;gap:var(--space-3)}
+.tt{width:38px;height:38px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--text-muted);border:1px solid var(--border)}
+.tt:hover{color:var(--teal);border-color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:10px var(--space-6);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600;text-decoration:none;white-space:nowrap}
+.btn-p{background:var(--teal);color:var(--text-inv)}
+.btn-p:hover{background:var(--teal-h);transform:translateY(-1px);box-shadow:0 0 20px rgba(31,209,126,.2)}
+.btn-o{border:1px solid var(--border);color:var(--text-muted)}
+.btn-o:hover{border-color:var(--teal);color:var(--teal)}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      backdrop-filter: blur(16px);
-      background: rgba(8,17,32,.72);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
+.hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;position:relative}
+.hero-noise{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--teal-d);background:var(--teal-g);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--teal);text-transform:uppercase;margin-bottom:var(--space-6)}
+.hero h1{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:400;line-height:1.08;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero-sub{margin-top:var(--space-6);font-size:var(--text-lg);color:var(--text-muted);max-width:48ch}
+.hero-ctas{margin-top:var(--space-8);display:flex;gap:var(--space-4)}
+.pill{padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-family:var(--font-mono);border:1px solid var(--border);color:var(--text-muted)}
 
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
+.marquee-wrap{background:var(--surface);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);overflow:hidden;padding-block:var(--space-4)}
+.marquee-track{display:flex;gap:var(--space-10);white-space:nowrap;animation:scroll 28s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:var(--space-3);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
+.eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--teal);text-transform:uppercase;margin-bottom:var(--space-5)}
+.section-h{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:400;line-height:1.1}
+.section-p{margin-top:var(--space-4);color:var(--text-muted);max-width:50ch}
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      box-shadow: 0 10px 25px rgba(59,130,246,.35);
-      font-weight: 900;
-    }
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-12)}
+.svc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-2xl);overflow:hidden;position:relative}
+.svc-card.wide{grid-column:span 2}
+.svc-inner{padding:clamp(var(--space-8),4vw,var(--space-12))}
+.svc-num{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-faint);margin-bottom:var(--space-6)}
+.svc-title{font-family:var(--font-display);font-size:var(--text-xl);font-weight:400;margin-bottom:var(--space-4)}
+.svc-desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.7;max-width:44ch}
 
-    .nav-links {
-      display: flex;
-      gap: 1.25rem;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .cta-row, .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .6rem;
-      padding: .95rem 1.2rem;
-      border-radius: 14px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: .2s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: white;
-      box-shadow: 0 16px 30px rgba(59,130,246,.28);
-    }
-
-    .btn-secondary {
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .hero {
-      padding: 5.5rem 0 4rem;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero h1 {
-      margin: 1rem 0;
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      line-height: .98;
-      letter-spacing: -.05em;
-      max-width: 12ch;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.8;
-      max-width: 62ch;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 28px;
-      padding: 1.4rem;
-      box-shadow: var(--shadow);
-    }
-
-    .mock-window {
-      background: #08101d;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.08);
-      overflow: hidden;
-    }
-
-    .mock-top {
-      display: flex;
-      gap: .45rem;
-      padding: .9rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.24); }
-    .screen {
-      padding: 1.2rem;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .stat-grid, .services, .proof-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .stat-grid { grid-template-columns: repeat(3, 1fr); }
-    .services { grid-template-columns: repeat(2, 1fr); }
-    .proof-grid { grid-template-columns: repeat(3, 1fr); }
-
-    .card, .service-card, .proof-card, .contact-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .eyebrow {
-      color: #7dd3fc;
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      font-weight: 700;
-    }
-
-    section { padding: 2rem 0 4.5rem; }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -.04em;
-      margin: .35rem 0 1rem;
-    }
-
-    .section-copy {
-      max-width: 65ch;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .service-card h3, .proof-card h3, .contact-card h3 { margin-top: .4rem; margin-bottom: .75rem; }
-    .service-card p, .proof-card p, .contact-card p, .card p { color: var(--muted); line-height: 1.7; }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-      margin-top: 1rem;
-    }
-
-    .tag {
-      padding: .5rem .75rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-      color: #d8e5f6;
-      font-size: .88rem;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 1rem;
-    }
-
-    footer {
-      padding: 1.2rem 0 3rem;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    @media (max-width: 920px) {
-      .hero, .contact-wrap, .proof-grid, .services, .stat-grid {
-        grid-template-columns: 1fr;
-      }
-      .nav-links { display: none; }
-      .hero h1 { max-width: none; }
-    }
-  </style>
+@media(max-width:768px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card.wide{grid-column:1}
+  .nav-links{display:none}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="brand" href="#top">
-          <span class="logo">L</span>
-          <span>Linfy Tech Solutions</span>
-        </a>
-        <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#why">Why us</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a class="btn btn-secondary" href="#contact">Book a consult</a>
-      </nav>
+
+<nav class="nav">
+  <a href="#" class="logo">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M7 9 L16 23 L25 9" stroke="#1fd17e" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#1fd17e"/></svg>
+    <span>Linfy Tech</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-end">
+    <a href="#contact" class="btn btn-p">Get started</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-noise"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Cape Town, South Africa</div>
+    <h1>Design.<br>Support.<br><em>Analytics.</em></h1>
+    <p class="hero-sub">Linfy Tech Solutions turns ideas into impact — beautiful design, hands-on user support, and data analytics that helps your business make smarter decisions.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn btn-p">Explore services</a>
+      <a href="https://linfytech.xyz" target="_blank" class="btn btn-o">Visit local.linfytech.xyz</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="top">
-    <section>
-      <div class="container hero">
-        <div>
-          <span class="pill">⚡ Modern websites, cyber resilience, and smart IT delivery</span>
-          <h1>Build smarter. Launch faster. Stay secure.</h1>
-          <p>
-            Linfy Tech Solutions helps ambitious businesses grow with modern web design, custom web development,
-            cybersecurity support, data recovery, and practical IT consulting. We build systems that look sharp,
-            work hard, and scale with you.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#contact">Start your project</a>
-            <a class="btn btn-secondary" href="#services">Explore services</a>
-          </div>
-          <div class="stack" style="margin-top:1.3rem;">
-            <span class="tag">Web Design</span>
-            <span class="tag">Web Development</span>
-            <span class="tag">Cybersecurity</span>
-            <span class="tag">Data Recovery</span>
-            <span class="tag">IT Consulting</span>
-          </div>
-        </div>
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Graphic Design</span>
+    <span class="marquee-item">User Support</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Graphic Design</span>
+    <span class="marquee-item">User Support</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Graphic Design</span>
+    <span class="marquee-item">User Support</span>
+    <span class="marquee-item">Data Analytics</span>
+  </div>
+</div>
 
-        <div class="hero-card">
-          <div class="mock-window">
-            <div class="mock-top">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="screen">
-              <div class="card">
-                <span class="eyebrow">Project Pulse</span>
-                <h3>Digital systems that actually move the business</h3>
-                <p>From landing pages to secure internal tools, we focus on clarity, speed, and results.</p>
-              </div>
-              <div class="stat-grid">
-                <div class="card"><strong>Fast</strong><p>Lean delivery with practical execution.</p></div>
-                <div class="card"><strong>Secure</strong><p>Cyber-aware by design, not as an afterthought.</p></div>
-                <div class="card"><strong>Scalable</strong><p>Built for growth, not just for launch day.</p></div>
-              </div>
-            </div>
-          </div>
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Core Services</div>
+    <h2 class="section-h">Three ways we help your business <em>grow</em></h2>
+    <div class="svc-grid">
+      <div class="svc-card wide">
+        <div class="svc-inner">
+          <div class="svc-num">01 / GRAPHIC DESIGN</div>
+          <h3 class="svc-title">Brand identity &amp; visual design</h3>
+          <p class="svc-desc">From logos and brand systems to social media graphics and marketing collateral — we create visuals that communicate your value.</p>
         </div>
       </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <span class="eyebrow">Services</span>
-        <h2>What Linfy Tech Solutions helps you do</h2>
-        <p class="section-copy">
-          We combine product thinking, technical execution, and security awareness to help you launch cleanly,
-          operate confidently, and fix the things that slow your business down.
-        </p>
-
-        <div class="services">
-          <article class="service-card">
-            <span class="eyebrow">01</span>
-            <h3>Web Design</h3>
-            <p>Modern, conversion-focused designs that make your brand look credible and your offer easy to understand.</p>
-          </article>
-          <article class="service-card">
-            <span class="eyebrow">02</span>
-            <h3>Web Development</h3>
-            <p>Responsive websites and custom web apps built for speed, usability, and long-term maintainability.</p>
-          </article>
-          <article class="service-card">
-            <span class="eyebrow">03</span>
-            <h3>Cybersecurity</h3>
-            <p>Security-conscious builds, assessments, and practical guidance to reduce risk without slowing the team down.</p>
-          </article>
-          <article class="service-card">
-            <span class="eyebrow">04</span>
-            <h3>Data Recovery & IT Consulting</h3>
-            <p>Hands-on technical support for recovery, troubleshooting, and smarter IT decisions as your business grows.</p>
-          </article>
+      <div class="svc-card">
+        <div class="svc-inner">
+          <div class="svc-num">02 / USER SUPPORT</div>
+          <h3 class="svc-title">Responsive technical support</h3>
+          <p class="svc-desc">Fast, human support for your users. Onboarding help, bug triage, and live technical assistance when things go sideways.</p>
         </div>
       </div>
-    </section>
-
-    <section id="why">
-      <div class="container">
-        <span class="eyebrow">Why Linfy</span>
-        <h2>Sharp execution, business-first thinking</h2>
-        <p class="section-copy">
-          Linfy Tech Solutions is built for founders and teams who want more than a pretty website. You need systems,
-          clarity, and execution that actually supports growth.
-        </p>
-
-        <div class="proof-grid">
-          <article class="proof-card">
-            <h3>Business-focused delivery</h3>
-            <p>We care about outcomes, not just outputs — better visibility, stronger trust, and cleaner operations.</p>
-          </article>
-          <article class="proof-card">
-            <h3>Modern startup energy</h3>
-            <p>Fast-moving, design-aware, and execution-driven without losing professionalism.</p>
-          </article>
-          <article class="proof-card">
-            <h3>Technical depth where it matters</h3>
-            <p>From custom builds to cybersecurity-minded implementation, we handle substance, not just presentation.</p>
-          </article>
+      <div class="svc-card">
+        <div class="svc-inner">
+          <div class="svc-num">03 / DATA ANALYTICS</div>
+          <h3 class="svc-title">Dashboards &amp; data insights</h3>
+          <p class="svc-desc">Turn raw data into clear dashboards and predictive models. See what's working, what's not, and what to do next.</p>
         </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <div class="container contact-wrap">
-        <div class="contact-card">
-          <span class="eyebrow">Start here</span>
-          <h2>Let’s build something that moves your business forward.</h2>
-          <p>
-            Whether you need a stronger online presence, a custom build, cybersecurity help, or practical IT support,
-            Linfy Tech Solutions can help you ship with confidence.
-          </p>
-          <div class="cta-row" style="margin-top:1.2rem;">
-            <a class="btn btn-primary" href="mailto:hello@linfytech.com">Email us</a>
-            <a class="btn btn-secondary" href="https://github.com/linfordlee14" target="_blank" rel="noreferrer">View GitHub</a>
-          </div>
-        </div>
-        <div class="contact-card">
-          <span class="eyebrow">Core focus</span>
-          <h3>What we deliver best</h3>
-          <div class="stack">
-            <span class="tag">Brand-forward landing pages</span>
-            <span class="tag">Business websites</span>
-            <span class="tag">Custom tools</span>
-            <span class="tag">Cyber-aware systems</span>
-            <span class="tag">Recovery support</span>
-            <span class="tag">IT strategy</span>
-          </div>
-          <p style="margin-top:1rem;">
-            Linfy Tech Solutions blends design, engineering, and technical problem-solving for businesses that want to move fast without breaking trust.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 Linfy Tech Solutions. Built for modern business growth.
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="contact" style="border-top:1px solid var(--divider); margin-top: 4rem;">
+  <div class="wrap" style="text-align: center;">
+    <h2 class="section-h">Let's build <em>something great</em></h2>
+    <p class="section-p" style="margin: 1rem auto 2rem;">Reach out to linfordlee14@gmail.com or check out my work.</p>
+    <a href="https:// Linford.linfytech.xyz" target="_blank" class="btn btn-p">View Portfolio</a>
+  </div>
+</section>
+
 </body>
 </html>
