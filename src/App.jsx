@@ -1,32 +1,79 @@
+import { useMemo, useState } from 'react'
+
 const services = [
   {
     number: '01 / GRAPHIC DESIGN',
-    title: 'Brand identity & visual design',
+    title: 'Brand identity & visual systems',
     description:
-      'From logos and brand systems to social media graphics and marketing collateral, we create visuals that communicate your value with confidence.',
+      'Logos, brand systems, campaign visuals, social media graphics, and polished marketing assets that make your business feel credible and consistent.',
     wide: true,
   },
   {
     number: '02 / USER SUPPORT',
-    title: 'Responsive technical support',
+    title: 'Responsive user & technical support',
     description:
-      'Fast, human support for your users. Onboarding help, bug triage, troubleshooting, and technical assistance when things go sideways.',
+      'Onboarding help, issue triage, troubleshooting, and practical support that keeps users confident instead of frustrated.',
   },
   {
     number: '03 / DATA ANALYTICS',
-    title: 'Dashboards & data insights',
+    title: 'Dashboards, reporting & insight',
     description:
-      'Turn raw data into clear dashboards and practical insight. Understand what is working, what is not, and what to do next.',
+      'Transform raw information into dashboards, clear reporting, and decision-ready insight that helps you act with confidence.',
   },
 ]
 
-const pills = ['Graphic Design', 'User Support', 'Data Analytics', 'Cape Town, South Africa']
+const stats = [
+  { value: '3', label: 'core service pillars' },
+  { value: '24/7', label: 'support mindset' },
+  { value: '100%', label: 'modern responsive delivery' },
+]
+
+const proof = [
+  {
+    title: 'Clean design language',
+    body: 'Modern visual execution that feels premium without becoming noisy or overdesigned.',
+  },
+  {
+    title: 'Human-first support',
+    body: 'Support experiences built to reduce confusion, speed up resolution, and create trust.',
+  },
+  {
+    title: 'Useful analytics',
+    body: 'Dashboards and reporting focused on decisions, not just data dumps and vanity charts.',
+  },
+]
+
+const testimonials = [
+  {
+    quote:
+      'Linfy brings clarity. The design looked better, the support got tighter, and the data finally started making sense.',
+    name: 'Client-ready delivery',
+    role: 'Positioned for agencies, founders, and growing teams',
+  },
+  {
+    quote:
+      'The difference is taste plus execution — not just making something work, but making it feel trustworthy and sharp.',
+    name: 'Brand-first execution',
+    role: 'Built for serious small businesses',
+  },
+]
+
+const marqueeItems = ['Graphic Design', 'User Support', 'Data Analytics', 'Dashboards', 'Brand Systems']
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const repeatedMarquee = useMemo(
+    () => Array.from({ length: 2 }).flatMap((_, idx) => marqueeItems.map((item) => ({ id: `${idx}-${item}`, item }))),
+    [],
+  )
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <div className="site-shell">
       <header className="nav">
-        <a href="#home" className="logo" aria-label="Linfy Tech home">
+        <a href="#home" className="logo" aria-label="Linfy Tech home" onClick={closeMenu}>
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <path d="M7 9 L16 23 L25 9" stroke="#1fd17e" strokeWidth="2" strokeLinecap="round" />
             <circle cx="16" cy="16" r="1.5" fill="#1fd17e" />
@@ -34,42 +81,63 @@ function App() {
           <span>Linfy Tech</span>
         </a>
 
-        <nav className="nav-links" aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#why">Why us</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
 
-        <div className="nav-end">
-          <a href="#contact" className="btn btn-primary">Get started</a>
+        <div className={`nav-panel${menuOpen ? ' open' : ''}`}>
+          <nav className="nav-links" aria-label="Primary">
+            <a href="#services" onClick={closeMenu}>Services</a>
+            <a href="#why" onClick={closeMenu}>Why us</a>
+            <a href="#proof" onClick={closeMenu}>Proof</a>
+            <a href="#contact" onClick={closeMenu}>Contact</a>
+          </nav>
+
+          <div className="nav-end">
+            <a href="#contact" className="btn btn-primary" onClick={closeMenu}>Get started</a>
+          </div>
         </div>
       </header>
 
       <main>
         <section className="hero" id="home">
           <div className="hero-noise" />
+          <div className="hero-gradient hero-gradient-left" />
+          <div className="hero-gradient hero-gradient-right" />
+
           <div className="wrap hero-inner">
             <div className="hero-eyebrow">Cape Town, South Africa</div>
             <h1>
-              Design.<br />
-              Support.<br />
-              <em>Analytics.</em>
+              Design that looks sharp.<br />
+              Support that feels human.<br />
+              <em>Analytics that guide action.</em>
             </h1>
             <p className="hero-sub">
-              Linfy Tech Solutions turns ideas into impact with beautiful design, hands-on user support,
-              and data analytics that helps your business make smarter decisions.
+              Linfy Tech Solutions helps ambitious businesses look better, support users better,
+              and make smarter decisions with practical design, responsive support, and data insight.
             </p>
 
             <div className="hero-ctas">
               <a href="#services" className="btn btn-primary">Explore services</a>
-              <a href="https://linfytech.xyz" target="_blank" rel="noreferrer" className="btn btn-secondary">
-                Visit linfytech.xyz
+              <a href="https://linford.linfytech.xyz" target="_blank" rel="noreferrer" className="btn btn-secondary">
+                View portfolio
               </a>
             </div>
 
-            <div className="hero-pills">
-              {pills.map((pill) => (
-                <span className="pill" key={pill}>{pill}</span>
+            <div className="stats-grid">
+              {stats.map((stat) => (
+                <div className="stat-card" key={stat.label}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -77,11 +145,9 @@ function App() {
 
         <section className="marquee-wrap" aria-label="Service categories">
           <div className="marquee-track">
-            {Array.from({ length: 2 }).flatMap((_, idx) =>
-              ['Graphic Design', 'User Support', 'Data Analytics', 'Brand Systems', 'Insights & Dashboards'].map((item) => (
-                <span className="marquee-item" key={`${idx}-${item}`}>{item}</span>
-              )),
-            )}
+            {repeatedMarquee.map(({ id, item }) => (
+              <span className="marquee-item" key={id}>{item}</span>
+            ))}
           </div>
         </section>
 
@@ -89,10 +155,10 @@ function App() {
           <div className="wrap">
             <div className="eyebrow">Core Services</div>
             <h2 className="section-heading">
-              Three ways we help your business <em>grow</em>
+              Three focused ways we help businesses <em>grow</em>
             </h2>
             <p className="section-copy">
-              We focus on practical creative work, reliable support, and data-driven thinking so your business feels polished, supported, and better informed.
+              We combine tasteful design, dependable support, and analytics that actually help you decide what to do next.
             </p>
 
             <div className="services-grid">
@@ -114,18 +180,57 @@ function App() {
             <div>
               <div className="eyebrow">Why Linfy</div>
               <h2 className="section-heading">
-                Built for teams that want clarity, speed, and tasteful execution.
+                Better than stitched-together execution from random disconnected vendors.
               </h2>
             </div>
             <div className="why-copy">
               <p>
-                You do not need random freelancers stitched together. You need work that looks sharp,
-                support that feels human, and data that actually helps you decide what to do next.
+                You need work that feels coherent: the design should align with the support experience,
+                and the support experience should feed better analytics and smarter decisions.
               </p>
               <p>
-                That is where Linfy Tech fits: modern creative execution, grounded technical support,
-                and analytics that turn information into action.
+                That is the point of this offer. One clean direction. Better presentation. Better communication.
+                Better signal from the data your business already creates.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="proof" className="proof-section">
+          <div className="wrap">
+            <div className="eyebrow">Value</div>
+            <h2 className="section-heading">
+              What makes the experience feel more <em>premium</em>
+            </h2>
+
+            <div className="proof-grid">
+              {proof.map((item) => (
+                <article className="proof-card" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="testimonials-section">
+          <div className="wrap">
+            <div className="eyebrow">Positioning</div>
+            <h2 className="section-heading">
+              Built to feel credible to founders, teams, and modern client-facing brands.
+            </h2>
+
+            <div className="testimonials-grid">
+              {testimonials.map((item) => (
+                <article className="testimonial-card" key={item.name}>
+                  <p className="quote">“{item.quote}”</p>
+                  <div className="testimonial-meta">
+                    <strong>{item.name}</strong>
+                    <span>{item.role}</span>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -138,7 +243,7 @@ function App() {
                 Let&apos;s build <em>something great</em>
               </h2>
               <p className="section-copy compact">
-                Reach out to linfordlee14@gmail.com or view the portfolio to see recent work.
+                Reach out to linfordlee14@gmail.com, explore the portfolio, or start a conversation about design, support, or analytics.
               </p>
             </div>
             <div className="contact-actions">
@@ -150,6 +255,10 @@ function App() {
           </div>
         </section>
       </main>
+
+      <a href="mailto:linfordlee14@gmail.com" className="floating-cta">
+        Start a project
+      </a>
     </div>
   )
 }
